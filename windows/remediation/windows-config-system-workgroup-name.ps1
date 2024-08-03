@@ -32,8 +32,9 @@ Add-Computer -WorkGroupName "$WORKGROUP"
 $CSWORKGROUP = Get-ComputerInfo -Property CsWorkgroup | select -expandproperty CsWorkgroup
 if ($CSWORKGROUP -eq "$WORKGROUP") {
     Write-Host "System Workgroup set to $CSWORKGROUP"
+    exit 0
 } else {
     Write-Host "System Workgroup set to $CSWORKGROUP"
     Write-Host "System Workgroup should be $WORKGROUP "
-    #exit 1
+    exit 1
 }
